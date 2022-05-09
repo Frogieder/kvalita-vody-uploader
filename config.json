@@ -1,0 +1,6 @@
+{
+  "InfluxDB URL": "https://www.example.com",
+  "Token": "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE==",
+  "Organization": "My Org",
+  "Bucket": "My Bucket"
+}
