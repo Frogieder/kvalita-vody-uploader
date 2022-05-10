@@ -49,7 +49,7 @@ class Receiver:
             "O2": int(senzor[5]) / 10
         }
 
-    def read_blocking(self) -> dict[str: Union[int, float]]:
+    def read_blocking(self) -> dict:
         while not self.radio.available(0):
             sleep(1 / 100)
         return self.read()

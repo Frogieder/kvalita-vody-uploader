@@ -44,7 +44,7 @@ uploader = Uploader(url=config["InfluxDB URL"], token=config["Token"],
 try:
     while True:
         data = receiver.read_blocking()
-
+        uploader.upload(data)
 except KeyboardInterrupt:
     pass
 finally:
