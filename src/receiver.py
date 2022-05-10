@@ -52,4 +52,4 @@ class Receiver:
     def read_blocking(self) -> dict[str: Union[int, float]]:
         while not self.radio.available(0):
             sleep(1 / 100)
-        self.read()
+        return  self.read()
