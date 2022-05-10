@@ -3,7 +3,6 @@ from libs.lib_nrf24 import NRF24
 import RPi.GPIO as GPIO
 # noinspection PyUnresolvedReferences
 import spidev
-from typing import Union
 from time import sleep
 
 
@@ -27,7 +26,7 @@ class Receiver:
         # enable listening
         self.radio.startListening()
 
-    def read(self) -> dict[str: Union[int, float]]:
+    def read(self) -> dict:
         senzor = []
         # 0: teplota
         # 1: čírosť
