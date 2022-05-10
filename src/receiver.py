@@ -10,6 +10,7 @@ class Receiver:
     def __init__(self):
         # Initialize radio
         self.pipes = [[0xE8, 0xE8, 0xF0, 0xF0, 0xE1], [0xF0, 0xF0, 0xF0, 0xF0, 0xE1]]
+        GPIO.setmode(GPIO.BCM)
         self.radio = NRF24(GPIO, spidev.SpiDev())
         self.radio.begin(0, 17)
         self.radio.setPayloadSize(32)
