@@ -22,6 +22,17 @@ from json import load as json_load
 from json.decoder import JSONDecodeError
 
 
+def average_over_list(data: list[dict]):
+    keys = data[0].keys()
+    result = {}
+    for dictionary in data:
+        for key in keys:
+            result[key] = result.get(key, 0) + dictionary[key]
+    length = len(data)
+    for key in keys:
+        result[key] /= length
+
+
 try:
     if os.path.isfile("./config.json"):
         with open("config.json", "r") as file:
@@ -42,10 +53,26 @@ uploader = Uploader(url=config["InfluxDB URL"], token=config["Token"],
                     organization=config["Organization"], bucket=config["Bucket"])
 
 try:
+    next_upload = time.time() + 60
+    next_get = 0
+    data = []
     while True:
-        data = receiver.read_blocking()
+        # perform measurement each second
+        if time.time() >= next_get:
+            next_get = time.time() + 1
+            data.append(receiver.read_blocking())
+        # upload average of measurements every minute
+        if time.time() >= next_upload:
+            next_upload += + 60
+            if len(data) < 20:
+                print(f"WARNING: Data receiving too slow ({len(data)} values/min\nSkipping upload")
+                data = []
+                continue
+            uploader.upload(average_over_list(data))
+            data = []
+
         uploader.upload(data)
 except KeyboardInterrupt:
     pass
 finally:
-    print("Stopping application")
+    print("\n\nStopping application")
