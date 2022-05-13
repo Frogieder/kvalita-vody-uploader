@@ -31,6 +31,7 @@ def average_over_list(data: list[dict]):
     length = len(data)
     for key in keys:
         result[key] /= length
+    return result
 
 
 try:
@@ -71,7 +72,7 @@ try:
             uploader.upload(average_over_list(data))
             data = []
 
-        uploader.upload(data)
+        uploader.upload(average_over_list(data))
 except KeyboardInterrupt:
     pass
 finally:
