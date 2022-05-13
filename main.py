@@ -65,7 +65,7 @@ try:
         if time.time() >= next_upload:
             next_upload += + 60
             if len(data) < 20:
-                print(f"WARNING: Data receiving too slow ({len(data)} values/min\nSkipping upload")
+                print(f"WARNING: Data receiving too slow:", len(data), "values/min\nSkipping upload")
                 data = []
                 continue
             uploader.upload(average_over_list(data))
