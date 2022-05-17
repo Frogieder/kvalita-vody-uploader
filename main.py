@@ -71,8 +71,6 @@ try:
                 continue
             uploader.upload(average_over_list(data))
             data = []
-
-        uploader.upload(average_over_list(data))
 except KeyboardInterrupt:
     pass
 finally:

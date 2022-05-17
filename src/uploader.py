@@ -20,7 +20,7 @@ class Uploader:
             for key in data.keys()
         ]
 
-        with InfluxDBClient(url="self.url", token=self.token, org=self.organization) as client:
+        with InfluxDBClient(url=self.url, token=self.token, org=self.organization) as client:
             write_api = client.write_api(write_options=SYNCHRONOUS)
             write_api.write(self.bucket, self.organization, sequence)
             print("Uploading to database")
