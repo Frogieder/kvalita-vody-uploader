@@ -17,7 +17,7 @@ class Uploader:
             Point("kvalita-vody")
                 .tag("location", self.location)
                 .field(key, data[key])
-                .time(datetime.utcnow(), WritePrecision.NS)
+                .time(datetime.utcnow(), WritePrecision.S)
             for key in data.keys()
         ]
 
