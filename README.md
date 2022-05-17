@@ -22,5 +22,5 @@ Replace the placeholder values with your own, real values
 ### Run
 Inside a clone of this repository, execute the following command:
 ```shell
-$ python3 main.py
+$ ./start_uploader
 ```
