@@ -130,4 +130,3 @@ dmypy.json
 
 # GitHub has tried to cover everything. Hwever, there still are a few things missing :P
 .idea/
-config.json

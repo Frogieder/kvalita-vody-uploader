@@ -38,7 +38,8 @@ try:
     if os.path.isfile("./config.json"):
         with open("config.json", "r") as file:
             config = json_load(file)
-            _ = [config["InfluxDB URL"], config["Token"], config["Organization"], config["Bucket"]]
+            # Test if all required keys are present in the file
+            _ = [config["InfluxDB URL"], config["Token"], config["Organization"], config["Bucket"], config["Location"]]
 except FileNotFoundError:
     print("Config file not found")
     exit(1)
@@ -51,7 +52,8 @@ except KeyError:
 
 receiver = Receiver()
 uploader = Uploader(url=config["InfluxDB URL"], token=config["Token"],
-                    organization=config["Organization"], bucket=config["Bucket"])
+                    organization=config["Organization"], bucket=config["Bucket"],
+                    location=config["Location"])
 
 try:
     next_upload = time.time() + 60
