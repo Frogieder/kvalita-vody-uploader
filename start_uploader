@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-python3 "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/main.py"
+cd "$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" || return
+python3 main.py
