@@ -5,6 +5,10 @@ It recieves data from 2.4GHz radio module and uploads them to an InfluxDB server
 
 ## Usage
 ### Install
+
+This script only runs on recent versions of Raspbian with Python>=3.6.
+The recommended version is 3.9.5 - the most recent one as of writing this.
+
 Clone this repository to your desired location:
 ``` shell
 $ cd [DESIRED LOCATION]
